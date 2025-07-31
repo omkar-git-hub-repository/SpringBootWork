@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -60,8 +61,28 @@ public class MyController {
         }
         Students s1 = new Students();
         return new ResponseEntity<>(s1, HttpStatus.NOT_FOUND);
-
     }
 
+    // get List Of Students by their course
+    @GetMapping("/getByCourse/{Course}")
+    public ResponseEntity<List<Students>> getbyCourse (@PathVariable("Course") String Course){
 
+        List<Students> studentsList = StudentRepo.SetAllStudents();
+        List<Students> matchedStudent = new ArrayList<>();
+
+        for (Students s : studentsList)
+        {
+            if (Course.equalsIgnoreCase(s.getCourse()))
+            {
+                matchedStudent.add(s);
+            }
+        }
+        if (!matchedStudent.isEmpty()) {
+            return new ResponseEntity<>(matchedStudent, HttpStatus.OK);
+        }
+        else
+        {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 }
