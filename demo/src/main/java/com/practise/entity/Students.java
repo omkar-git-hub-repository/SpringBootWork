@@ -58,4 +58,15 @@ public class Students {
                 ", marks=" + marks +
                 '}';
     }
+
+    // create Constructor to set the values
+    public Students(int id, String fName, String lName, String course, float marks) {
+        this.id = id;
+        this.fName = fName;
+        this.lName = lName;
+        Course = course;
+        this.marks = marks;
+    }
+
+
 }
