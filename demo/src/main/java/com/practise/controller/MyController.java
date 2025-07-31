@@ -53,7 +53,7 @@ public class MyController {
         List<Students> studentsList = StudentRepo.SetAllStudents();
         for (Students s : studentsList)
         {
-            if (fName.equals(s.getfName()))
+            if (fName.equalsIgnoreCase (s.getfName()))
             {
                 return new ResponseEntity<>(s, HttpStatus.OK);
             }

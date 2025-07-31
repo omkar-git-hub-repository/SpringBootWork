@@ -22,7 +22,19 @@ public class StudentRepo {
         Students s9 = new Students(9, "Karan", "Gupta", "C#", 83.1f);
         Students s10 = new Students(10, "Anjali", "Nair", "Machine Learning", 94.5f);
 
-        List<Students> studList = Arrays.asList(s1, s2, s3, s4, s5, s6, s7, s8, s9, s10);
+        Students s11 = new Students(11, "Mehul", "Tiwari", "Java", 68.4f);
+        Students s12 = new Students(12, "Priya", "Jadhav", "Python", 70.0f);
+        Students s13 = new Students(13, "Suresh", "Yadav", "C++", 65.9f);
+        Students s14 = new Students(14, "Ritika", "Kapoor", "JavaScript", 73.2f);
+        Students s15 = new Students(15, "Deepak", "Mali", "Data Science", 69.7f);
+        Students s16 = new Students(16, "Tina", "More", "Java", 64.5f);
+        Students s17 = new Students(17, "Aarav", "Shetty", "SQL", 71.3f);
+        Students s18 = new Students(18, "Nikita", "Kulkarni", "C#", 62.8f);
+        Students s19 = new Students(19, "Rohan", "Patel", "Machine Learning", 74.2f);
+        Students s20 = new Students(20, "Gaurav", "Bhatt", "HTML", 66.6f);
+
+
+        List<Students> studList = Arrays.asList(s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12, s13, s14, s15, s15, s16, s17, s18, s19, s20);
         return studList;
 
     }
