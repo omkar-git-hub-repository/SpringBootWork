@@ -36,7 +36,7 @@ public class MyController {
     }
 
 
-    // StudentsWith > 75 mark
+    // StudentsWith > 75 mark  using Stream Operation
     @GetMapping("/DistinctStudent")
     public ResponseEntity<List<Students>> getDistinctStudents(){
 
@@ -44,6 +44,23 @@ public class MyController {
         List<Students> DistinctStudent =  studentsList.stream().filter( k -> k.getMarks() > 85 ).toList();
 
         return new ResponseEntity<>(DistinctStudent, HttpStatus.OK);
+    }
+
+    // Get Student By First name
+    @GetMapping("/getByName/{fName}")
+    public ResponseEntity<Students> getByName(@PathVariable("fName") String fName){
+
+        List<Students> studentsList = StudentRepo.SetAllStudents();
+        for (Students s : studentsList)
+        {
+            if (fName.equals(s.getfName()))
+            {
+                return new ResponseEntity<>(s, HttpStatus.OK);
+            }
+        }
+        Students s1 = new Students();
+        return new ResponseEntity<>(s1, HttpStatus.NOT_FOUND);
+
     }
 
 
