@@ -22,13 +22,11 @@ public class MyController {
     }
 
     @GetMapping("/getById/{studId}")
-    public ResponseEntity<Students> getById(@PathVariable("studId") int studId){
+    public ResponseEntity<Students> getById(@PathVariable("studId") int studId) {
 
         List<Students> studList = StudentRepo.SetAllStudents();
-        for (Students s : studList)
-        {
-            if (studId == s.getId())
-            {
+        for (Students s : studList) {
+            if (studId == s.getId()) {
                 return new ResponseEntity<>(s, HttpStatus.OK);
             }
         }
@@ -39,49 +37,47 @@ public class MyController {
 
     // StudentsWith > 75 mark  using Stream Operation
     @GetMapping("/DistinctStudent")
-    public ResponseEntity<List<Students>> getDistinctStudents(){
+    public ResponseEntity<List<Students>> getDistinctStudents() {
 
         List<Students> studentsList = StudentRepo.SetAllStudents();
-        List<Students> DistinctStudent =  studentsList.stream().filter( k -> k.getMarks() > 85 ).toList();
+        List<Students> DistinctStudent = studentsList.stream().filter(k -> k.getMarks() > 85).toList();
 
         return new ResponseEntity<>(DistinctStudent, HttpStatus.OK);
     }
 
     // Get Student By First name
     @GetMapping("/getByName/{fName}")
-    public ResponseEntity<Students> getByName(@PathVariable("fName") String fName){
-
-        List<Students> studentsList = StudentRepo.SetAllStudents();
-        for (Students s : studentsList)
-        {
-            if (fName.equalsIgnoreCase (s.getfName()))
-            {
-                return new ResponseEntity<>(s, HttpStatus.OK);
-            }
-        }
-        Students s1 = new Students();
-        return new ResponseEntity<>(s1, HttpStatus.NOT_FOUND);
-    }
-
-    // get List Of Students by their course
-    @GetMapping("/getByCourse/{Course}")
-    public ResponseEntity<List<Students>> getbyCourse (@PathVariable("Course") String Course){
+    public ResponseEntity<List<Students>> getByName(@PathVariable("fName") String fName) {
 
         List<Students> studentsList = StudentRepo.SetAllStudents();
         List<Students> matchedStudent = new ArrayList<>();
-
-        for (Students s : studentsList)
-        {
-            if (Course.equalsIgnoreCase(s.getCourse()))
-            {
+        for (Students s : studentsList) {
+            if (fName.equalsIgnoreCase(s.getfName())) {
                 matchedStudent.add(s);
             }
         }
         if (!matchedStudent.isEmpty()) {
             return new ResponseEntity<>(matchedStudent, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        else
-        {
+    }
+
+    // get List Of Students by their course
+    @GetMapping("/getByCourse/{Course}")
+    public ResponseEntity<List<Students>> getbyCourse(@PathVariable("Course") String Course) {
+
+        List<Students> studentsList = StudentRepo.SetAllStudents();
+        List<Students> matchedStudent = new ArrayList<>();
+
+        for (Students s : studentsList) {
+            if (Course.equalsIgnoreCase(s.getCourse())) {
+                matchedStudent.add(s);
+            }
+        }
+        if (!matchedStudent.isEmpty()) {
+            return new ResponseEntity<>(matchedStudent, HttpStatus.OK);
+        } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }

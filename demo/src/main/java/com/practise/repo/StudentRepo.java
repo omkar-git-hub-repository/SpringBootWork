@@ -22,7 +22,7 @@ public class StudentRepo {
         Students s9 = new Students(9, "Karan", "Gupta", "C#", 83.1f);
         Students s10 = new Students(10, "Anjali", "Nair", "Machine Learning", 94.5f);
 
-        Students s11 = new Students(11, "Mehul", "Tiwari", "Java", 68.4f);
+        Students s11 = new Students(11, "priya", "Tiwari", "Java", 68.4f);
         Students s12 = new Students(12, "Priya", "Jadhav", "Python", 70.0f);
         Students s13 = new Students(13, "Suresh", "Yadav", "C++", 65.9f);
         Students s14 = new Students(14, "Ritika", "Kapoor", "JavaScript", 73.2f);
