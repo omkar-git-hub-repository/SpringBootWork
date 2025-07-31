@@ -8,6 +8,10 @@ public class Students {
     private String Course;
     private float marks;
 
+    public Students() {
+
+    }
+
     public int getId() {
         return id;
     }

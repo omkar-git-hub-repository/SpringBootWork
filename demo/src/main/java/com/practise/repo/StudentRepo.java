@@ -7,7 +7,7 @@ import java.util.List;
 
 public class StudentRepo {
 
-    public static List<Students> SetAllEmployee(){
+    public static List<Students> SetAllStudents(){
 
         Students s1 = new Students(1, "Amit", "Sharma", "Java", 85.6f);
         Students s2 = new Students(2, "Sneha", "Patil", "Python", 91.2f);
