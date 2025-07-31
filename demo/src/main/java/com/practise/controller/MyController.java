@@ -36,4 +36,15 @@ public class MyController {
     }
 
 
+    // StudentsWith > 75 mark
+    @GetMapping("/DistinctStudent")
+    public ResponseEntity<List<Students>> getDistinctStudents(){
+
+        List<Students> studentsList = StudentRepo.SetAllStudents();
+        List<Students> DistinctStudent =  studentsList.stream().filter( k -> k.getMarks() > 85 ).toList();
+
+        return new ResponseEntity<>(DistinctStudent, HttpStatus.OK);
+    }
+
+
 }

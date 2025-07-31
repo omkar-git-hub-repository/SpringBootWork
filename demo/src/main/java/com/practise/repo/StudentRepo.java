@@ -1,13 +1,15 @@
 package com.practise.repo;
 
 import com.practise.entity.Students;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.Arrays;
 import java.util.List;
 
 public class StudentRepo {
 
-    public static List<Students> SetAllStudents(){
+    public static List<Students> SetAllStudents() {
 
         Students s1 = new Students(1, "Amit", "Sharma", "Java", 85.6f);
         Students s2 = new Students(2, "Sneha", "Patil", "Python", 91.2f);
@@ -20,9 +22,8 @@ public class StudentRepo {
         Students s9 = new Students(9, "Karan", "Gupta", "C#", 83.1f);
         Students s10 = new Students(10, "Anjali", "Nair", "Machine Learning", 94.5f);
 
-        List<Students> studList = Arrays.asList(s1, s2, s3, s4, s5, s6, s7, s8 , s9, s10);
+        List<Students> studList = Arrays.asList(s1, s2, s3, s4, s5, s6, s7, s8, s9, s10);
         return studList;
 
     }
-
 }
