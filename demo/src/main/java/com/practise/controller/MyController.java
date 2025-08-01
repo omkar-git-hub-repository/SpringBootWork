@@ -81,18 +81,19 @@ public class MyController {
 
     // Add get response method
     @GetMapping("/getAlldata")
-    public ResponseEntity<List<Students>> getAllStudentsData(@RequestParam("fName") String fName){
+    public ResponseEntity<List<Students>> getAllStudentsData(@RequestParam(required = false) String fName){
         List<Students> studentsList = StudentRepo.SetAllStudents();
         List<Students> matchedStudent = new ArrayList<>();
 
+        if (fName == null)
+        {
+            return new ResponseEntity<>(studentsList, HttpStatus.OK);
+        }
+
         for (Students s : studentsList)
         {
-            if (fName.equalsIgnoreCase(s.getfName()))
-            {
+            if (fName.equalsIgnoreCase(s.getfName())) {
                 matchedStudent.add(s);
-            }
-            else {
-                return new ResponseEntity<>(studentsList, HttpStatus.OK);
             }
         }
         return new ResponseEntity<>(matchedStudent, HttpStatus.OK);
