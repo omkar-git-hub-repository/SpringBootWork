@@ -81,7 +81,7 @@ public class MyController {
 
     // Add get response method
     @GetMapping("/getAlldata")
-    public ResponseEntity<List<Students>> getAllStudentsData(@RequestParam(required = false) String fName){
+    public ResponseEntity<List<Students>> getAllStudentsData(@RequestParam(required = false) List<String> fName){
         List<Students> studentsList = StudentRepo.SetAllStudents();
         List<Students> matchedStudent = new ArrayList<>();
 
@@ -92,8 +92,11 @@ public class MyController {
 
         for (Students s : studentsList)
         {
-            if (fName.equalsIgnoreCase(s.getfName())) {
-                matchedStudent.add(s);
+            for (String name : fName) {
+                if (fName.contains(s.getfName())) {
+                    matchedStudent.add(s);
+                    break;
+                }
             }
         }
         return new ResponseEntity<>(matchedStudent, HttpStatus.OK);
