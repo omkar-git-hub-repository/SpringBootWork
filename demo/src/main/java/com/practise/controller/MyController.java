@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
@@ -33,7 +34,6 @@ public class MyController {
         Students s1 = new Students();
         return new ResponseEntity<>(s1, HttpStatus.NOT_FOUND);
     }
-
 
     // StudentsWith > 75 mark  using Stream Operation
     @GetMapping("/DistinctStudent")
@@ -79,6 +79,24 @@ public class MyController {
             return new ResponseEntity<>(matchedStudent, HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    // Add get response method
+    @GetMapping("/getAlldata")
+    public ResponseEntity<List<Students>> getAllStudentsData(@RequestBody String fName){
+        List<Students> studentsList = StudentRepo.SetAllStudents();
+        List<Students> matchedStudent = new ArrayList<>();
+
+        for (Students s : studentsList)
+        {
+            if (fName.equalsIgnoreCase(s.getfName()))
+            {
+                matchedStudent.add(s);
+            }
+            else {
+                return new ResponseEntity<>(studentsList, HttpStatus.OK);
+            }
         }
     }
 }
