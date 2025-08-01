@@ -85,7 +85,7 @@ public class MyController {
         List<Students> studentsList = StudentRepo.SetAllStudents();
         List<Students> matchedStudent = new ArrayList<>();
 
-        if (fName == null)
+        if (fName == null || fName.isEmpty())
         {
             return new ResponseEntity<>(studentsList, HttpStatus.OK);
         }
