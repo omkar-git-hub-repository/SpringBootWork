@@ -90,10 +90,9 @@ public class MyController {
             return new ResponseEntity<>(studentsList, HttpStatus.OK);
         }
 
-        for (Students s : studentsList)
-        {
+        for (Students s : studentsList) {
             for (String name : fName) {
-                if (fName.contains(s.getfName())) {
+                if (name.equalsIgnoreCase(s.getfName())) {
                     matchedStudent.add(s);
                     break;
                 }
