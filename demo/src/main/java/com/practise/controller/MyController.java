@@ -98,5 +98,6 @@ public class MyController {
                 return new ResponseEntity<>(studentsList, HttpStatus.OK);
             }
         }
+        return new ResponseEntity<>(matchedStudent, HttpStatus.OK);
     }
 }
