@@ -90,6 +90,7 @@ public class MyController {
             return new ResponseEntity<>(studentsList, HttpStatus.OK);
         }
 
+        // It will take multiple parameters in URL
         for (Students s : studentsList) {
             for (String name : fName) {
                 if (name.equalsIgnoreCase(s.getfName())) {
